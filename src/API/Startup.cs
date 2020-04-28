@@ -1,5 +1,6 @@
 namespace API
 {
+    using Infrastructure.StartupExtensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -16,7 +17,10 @@ namespace API
  
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services 
+                .AddSwaggerConfiguration(Configuration)
+                .AddCors()
+                .AddControllers();
         }
 
  
@@ -27,8 +31,14 @@ namespace API
                 app.UseDeveloperExceptionPage();
             }
 
-            app
+            app 
                 .UseHttpsRedirection()
+                .UseSwaggerConfiguration(Configuration)
+                .UseCors(config
+                        => config
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader())
                 .UseRouting()
                 .UseAuthorization()
                 .UseEndpoints(endpoints 
