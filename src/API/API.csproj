@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Training.API</AssemblyName>
+    <Authors>Etni Alvis</Authors>
+    <Company>Greenstone Consulting</Company>
+    <Copyright>Greenstone Consulting</Copyright>
+    <Version>1.0.1</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
 
 
 </Project>

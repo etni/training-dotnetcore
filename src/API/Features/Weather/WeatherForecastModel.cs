@@ -2,7 +2,7 @@ using System;
 
 namespace API.Features.Weather
 {
-    public class WeatherForecast
+    public class WeatherForecastModel
     {
         public DateTime Date { get; set; }
 
