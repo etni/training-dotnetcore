@@ -23,3 +23,8 @@ jobs:
       run: dotnet build ./src --configuration Release --no-restore
     - name: Test
       run: dotnet test ./src --no-restore --verbosity normal
+    - name: Deploy to Azure
+      uses: azure/webapps-deploy@v2
+      with:
+        creds: ${{ secrets.azureWebAppPublishProfile }}
+      
