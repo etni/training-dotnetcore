@@ -1,13 +1,11 @@
 name: API-CI
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
 jobs:
-  build-and-deploy:
+  build-and-test:
 
     runs-on: ubuntu-latest
 
@@ -17,7 +15,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.101
+        dotnet-version: 3.1.102
         
     - name: Install dependencies
       run: dotnet restore ./src
@@ -28,10 +26,5 @@ jobs:
     - name: Test
       run: dotnet test ./src --no-restore --verbosity normal
       
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
-      uses: azure/webapps-deploy@v2
-      with: 
-        app-name: training-dotnetcore
-        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
 
       
